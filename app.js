@@ -16,8 +16,10 @@ app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
-var favicon = require("serve-favicon");
-var path = require("path");
+
+// favicon 404 DEBUG
+const favicon = require("serve-favicon");
+const path = require("path");
 
 app.use(favicon(path.join(__dirname, "/public", "favicon.ico")));
 
@@ -25,6 +27,14 @@ app.use(favicon(path.join(__dirname, "/public", "favicon.ico")));
 app.get("/", function(req, res) {
 
     res.render("home", { startingContent: homeStartingContent });
+});
+
+app.get("/about", function(req, res) {
+    res.render("about", { aboutContent: aboutContent });
+});
+
+app.get("/contact", function(req, res) {
+    res.render("contact", { contactContent: contactContent });
 });
 
 
