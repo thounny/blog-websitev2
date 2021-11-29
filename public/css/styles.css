@@ -40,3 +40,12 @@
     font-size: 1.5rem;
     color: #fff;
 }
+
+.footer .thounny {
+    text-decoration: none;
+    color: black;
+}
+
+.footer .thounny :hover {
+    color: white;
+}
