@@ -1,15 +1,19 @@
 <%- include("partials/header") -%>
-
     <h1>Compose</h1>
-    <form action="submit">
-        <div class="container mt-5 mb-5">
-            <textarea id="summernote">
-
-        </textarea>
-            <button type="submit" class="publish">publish</button>
-
+    <form action="/compose" method="post">
+        <div class="form-group">
+            <label>Title</label>
+            <input class="form-control" type="text" name="postTitle">
+            <label>Post</label>
+            <textarea id="summernote" class="form-control" name="postBody"></textarea>
         </div>
+        <button type="submit" class="btn btn-primary">publish</button>
     </form>
 
 
     <%- include("partials/footer") -%>
+        <script>
+            $(document).ready(function() {
+                $('#summernote').summernote();
+            });
+        </script>
