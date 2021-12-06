@@ -4,6 +4,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require("lodash");
+const mongoose = require("mongoose");
+// const prettier = require("prettier/standalone");
+// const plugins = [require("prettier/parser-graphql")];
 
 
 
@@ -19,11 +22,26 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+mongoose.connect("mongodb://localhost:27017/blogDB", { useNewUrlParser: true });
+
+const postSchema = {
+    title: String,
+    content: String
+};
+
+const Post = mongoose.model("Post", postSchema);
+
 // favicon 404 DEBUG
 const favicon = require("serve-favicon");
 const path = require("path");
 
 app.use(favicon(path.join(__dirname, "/public", "favicon.ico")));
+
+
+// prettier.format("type Query { hello: String }", {
+//     parser: "graphql",
+//     plugins,
+// });
 
 let posts = [];
 
@@ -44,12 +62,12 @@ app.get("/compose", function(req, res) {
 });
 
 app.post("/compose", function(req, res) {
-    const post = {
+    const post = new Post({
         title: req.body.postTitle,
         content: req.body.postBody
-    };
+    });
 
-    posts.push(post);
+    post.save();
 
     res.redirect("/");
 });
