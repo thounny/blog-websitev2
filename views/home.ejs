@@ -5,22 +5,21 @@
     <p>
         <%= startingContent %>
     </p>
-    <% console.log(posts); %>
 
-        <% posts.forEach(function(post) { %>
+    <% posts.forEach(function(post) { %>
 
-            <h1>
-                <%=post.title%>
-            </h1>
-            <p>
-                <%=post.content.substring(0, 100) + " ..."%>
-                    <a href="/posts/<%= post.title %>" target="_blank">Read More</a>
-            </p>
+        <h1>
+            <%=post.title%>
+        </h1>
+        <p>
+            <%=post.content.substring(0, 100) + " ..."%>
+                <a href="/posts/<%= post.title %>" target="_blank">Read More</a>
+        </p>
 
-            <% }); %>
-
+        <% }); %>
 
 
 
 
-                <%- include("partials/footer") -%>
+
+            <%- include("partials/footer") -%>
