@@ -2,4 +2,5 @@
 
 Creating a blog-website
 
-Deploying Node, Express, EJS, and Javascript
+Deployed with Node, Express, EJS
+Backend == MongoDB and Mongoose
